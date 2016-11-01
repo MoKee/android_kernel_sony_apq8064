@@ -18,26 +18,6 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-/*
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
 
 /**========================================================================
 
@@ -685,7 +665,8 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
 
       if (wrqu->data.flags & IW_SCAN_THIS_ESSID)  {
 
-          if(scanReq->essid_len) {
+          if(scanReq->essid_len  &&
+               (scanReq->essid_len <= SIR_MAC_MAX_SSID_LENGTH)) {
               scanRequest.SSIDs.numOfSSIDs = 1;
               scanRequest.SSIDs.SSIDList =( tCsrSSIDInfo *)vos_mem_malloc(sizeof(tCsrSSIDInfo));
               if(scanRequest.SSIDs.SSIDList) {
@@ -698,6 +679,10 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
                 VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, "%s: Unable to allocate memory",__func__);
                 VOS_ASSERT(0);
               }
+          }
+          else
+          {
+            hddLog(LOGE, FL("Invalid essid length : %d"), scanReq->essid_len);
           }
       }
 

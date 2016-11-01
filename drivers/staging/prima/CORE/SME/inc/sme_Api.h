@@ -18,26 +18,6 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
-/*
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
- *
- * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
- *
- *
- * Permission to use, copy, modify, and/or distribute this software for
- * any purpose with or without fee is hereby granted, provided that the
- * above copyright notice and this permission notice appear in all
- * copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
- * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
- * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
- * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
 
 #if !defined( __SME_API_H )
 #define __SME_API_H
@@ -2592,18 +2572,6 @@ eHalStatus sme_ChangeRoamScanChannelList(tHalHandle hHal, tANI_U8 *pChannelList,
                                          tANI_U8 numChannels);
 
 /*--------------------------------------------------------------------------
-  \brief sme_ChangeCountryValidChannelListByRevision() - Change Korea valid channel list
-  based on country revision number
-  This is a synchronuous call
-  \param hHal - The handle returned by macOpen.
-  \return eHAL_STATUS_SUCCESS - SME update config successful.
-          Other status means SME is failed to update
-  \sa
-  --------------------------------------------------------------------------*/
-eHalStatus sme_ChangeCountryValidChannelListByRevision(tHalHandle hHal,
-                                         tANI_U8 Revision);
-
-/*--------------------------------------------------------------------------
   \brief csrUpdateBgScanConfigIniChannelList() - Update bgscan roam cache
   This is a synchronuous call
   \param hHal - The handle returned by macOpen.
@@ -2625,16 +2593,6 @@ eHalStatus sme_UpdateBgScanConfigIniChannelList(tHalHandle hHal,
   --------------------------------------------------------------------------*/
 eHalStatus sme_getRoamScanChannelList(tHalHandle hHal, tANI_U8 *pChannelList,
                                          tANI_U8 *pNumChannels);
-
-/*--------------------------------------------------------------------------
-  \brief sme_GetCountryRevision() - get Country revision index
-  This is a synchronuous call
-  \param hHal - The handle returned by macOpen.
-  \return eHAL_STATUS_SUCCESS - SME update config successful.
-          Other status means SME is failed to update
-  \sa
-  --------------------------------------------------------------------------*/
-eHalStatus sme_GetCountryRevision(tHalHandle hHal, tANI_U8 *pRevision);
 
 /*--------------------------------------------------------------------------
   \brief sme_getWESMode() - getWES Mode
